@@ -80,9 +80,9 @@ func SignUp() gin.HandlerFunc {
 		passphrase := HashPassword(user.Passphrase)
 		user.Passphrase = passphrase
 
-		token, refreshtoken, _ := generate.TokenGenerator(user.Email, strconv.FormatUint(uint64(user.ID), 10))
-		user.Token = token
-		user.Refresh_Token = refreshtoken
+		// token, refreshtoken, _ := generate.TokenGenerator(user.Email, strconv.FormatUint(uint64(user.ID), 10))
+		// user.Token = token
+		// user.Refresh_Token = refreshtoken
 		user.CreatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 		user.UpdatedAt, _ = time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 
@@ -96,14 +96,14 @@ func SignUp() gin.HandlerFunc {
 		}
 		transaction.Commit()
 
-		data := make(map[string]string)
-		data["token"] = token
-		data["refreshToken"] = refreshtoken
+		// data := make(map[string]string)
+		// data["token"] = token
+		// data["refreshToken"] = refreshtoken
 
 		c.JSON(http.StatusCreated, gin.H{
 			"status":  http.StatusCreated,
 			"message": "Successfully Signed Up",
-			"data":    data,
+			// "data":    data,
 		})
 	}
 }

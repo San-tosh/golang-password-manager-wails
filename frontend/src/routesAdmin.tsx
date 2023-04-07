@@ -1,12 +1,9 @@
-import React from "react";
-
 import DataTables from "./views/admin/tables"
 import NewEntry from "./views/admin/NewEntry"
-// Icon Imports
 import {
   MdHome,MdAdd
 } from "react-icons/md";
-import ViewDetail from "./views/admin/ViewDetail";
+import EditDetail from "./views/admin/EditDetail";
 
 const routesAdmin = [
   {
@@ -24,11 +21,11 @@ const routesAdmin = [
     component: <NewEntry />,
   },
   {
-    name: "View Detail",
+    name: "Edit Detail",
     layout: "/admin",
     icon: <MdAdd className="h-6 w-6" />,
-    path: "view-detail",
-    component: <ViewDetail />,
+    path: "edit-detail",
+    component: <EditDetail />,
   },
 ];
 export default routesAdmin;

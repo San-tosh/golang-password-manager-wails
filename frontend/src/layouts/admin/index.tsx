@@ -3,6 +3,9 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "../../components/navbar";
 import Sidebar from "../../components/sidebar";
 import routes from "../../routesAdmin";
+import { ReactNotifications} from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css';
 
 export default function Admin(props: { [x: string]: any }) {
   const { ...rest } = props;
@@ -57,7 +60,8 @@ export default function Admin(props: { [x: string]: any }) {
 
   document.documentElement.dir = "ltr";
   return (
-    <div className="flex h-full w-full">
+    <div>
+    <div className="relative flex h-full w-full">
       <Sidebar open={open} onClose={() => setOpen(false)} />
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
@@ -86,6 +90,8 @@ export default function Admin(props: { [x: string]: any }) {
           </div>
         </main>
       </div>
+      <ReactNotifications/>
+    </div>
     </div>
   );
 }

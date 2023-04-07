@@ -32,7 +32,7 @@ const Sidebar = (props: {
       {/* Nav item */}
 
       <ul className="mb-auto pt-1">
-        <Links routes={routes} />
+        <Links routes={routes.slice(0,2)} />
       </ul>
 
       {/* Nav item end */}

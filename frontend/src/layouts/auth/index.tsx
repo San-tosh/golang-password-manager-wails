@@ -1,8 +1,9 @@
-import Footer from "../../components/footer/FooterAuthDefault";
-import { Link, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import routes from "../../routes";
 import FixedPlugin from "../../components/fixedPlugin/FixedPlugin";
-
+import { ReactNotifications} from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css';
 export default function Auth() {
     const getRoutes = (routes: RoutesType[]): any => {
       return routes.map((prop, key) => {
@@ -40,6 +41,7 @@ export default function Auth() {
             </div>
           </main>
         </div>
+        <ReactNotifications/>
       </div>
     );
   }

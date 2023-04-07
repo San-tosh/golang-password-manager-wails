@@ -32,9 +32,16 @@ func (a *App) startup(ctx context.Context) {
 
 	router := gin.New()
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:8000", "http://localhost", "http://localhost:5173", "http://localhost:34115"}
+	config.AllowOrigins = []string{
+		"http://localhost:8000",
+		"http://localhost",
+		"http://localhost:5173",
+		"http://localhost:5173/",
+		"http://localhost:34115"}
+	config.AllowHeaders = []string{"token", "Origin", "Content-Type"}
 	router.Use(gin.Logger())
-	router.Use(cors.New(config))
+	newConfig := cors.New(config)
+	router.Use(newConfig)
 	routes.UserRoutes(router)
 	routes.AdminRoutes(router)
 	log.Println(router.Run(":" + port))

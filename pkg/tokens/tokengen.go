@@ -53,6 +53,7 @@ func UpdateAllTokens(signedtoken string, signedrefreshtoken string, userid uint)
 	user.Refresh_Token = signedrefreshtoken
 	updated_at, _ := time.Parse(time.RFC3339, time.Now().Format(time.RFC3339))
 	user.UpdatedAt = updated_at
+	models.DB.Save(&user)
 	return user
 }
 

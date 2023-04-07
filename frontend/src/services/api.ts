@@ -6,15 +6,21 @@ export const publicRequest = axios.create({
   });
 
   //ts-ignore
+  export const getToken = ()=> {
   let user = localStorage.getItem("persist:root")
   let token = ''
   if(user) {
       user = JSON.parse(user)?.user
       const currentUser = user && JSON.parse(user).currentUser;
-      token = currentUser?.accessToken;
+      token = currentUser?.token;
   }
+  console.log(token)
+  return token;
+}
 
 export const userRequest = axios.create({
   baseURL: API_URL,
-  headers: { token: `${token}` },
+  headers: { 
+    'Content-Type' : 'application/json'
+   },
 });

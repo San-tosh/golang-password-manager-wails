@@ -1,6 +1,7 @@
 package models
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -11,9 +12,23 @@ func TestGetUserIDByToken(t *testing.T) {
 		"sdfdsf",
 	}
 	for _, token := range tokens {
-		_, error := GetUserIDByToken(token)
+		_, error := GetUserByToken(token)
 		if error != nil {
-			t.Error("Get User id by token failed")
+			t.Error("Get Userby token failed")
 		}
+	}
+	SeedPairKeys()
+}
+
+func TestGetSecretsByUserID(t *testing.T) {
+	userID := [3]uint{
+		1, 2, 3,
+	}
+	for _, token := range userID {
+		value, error := GetSecretsByUserID(token)
+		if error != nil {
+			t.Error("Get secrets by User token failed")
+		}
+		fmt.Println("data", value)
 	}
 }

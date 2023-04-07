@@ -14,4 +14,8 @@ func UserRoutes(incomingRoutes *gin.Engine) {
 func AdminRoutes(incomingRoutes *gin.Engine) {
 	incomingRoutes.Use(middleware.Authentication())
 	incomingRoutes.POST("/admin/add-secret", controllers.AddSecret())
+	incomingRoutes.GET("/admin/get-secret", controllers.GetSecret())
+	incomingRoutes.POST("/admin/edit-secret", controllers.EditSecret())
+	incomingRoutes.POST("/admin/delete-secret", controllers.DeleteSecret())
+	incomingRoutes.GET("/admin/get-secret-for-edit", controllers.GetSecretForEdit())
 }
